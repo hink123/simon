@@ -37,6 +37,10 @@ div.blue {
     background-color: blue;
 }
 
-div.yellow {
-    background-color: yellow;
+div.purple {
+    background-color: purple;
+}
+
+div:hover {
+    opacity: 0.5;
 }
