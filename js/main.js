@@ -2,10 +2,11 @@
 
 const SELECTED_SQUARE = 0.5;
 const UNSELECTED_SQUARE = null;
+const LOSE_MESSAGE = 'WRONG! Hit play to try again';
 
 /*----- app's state (variables) -----*/
 
-var simonArr, userChoice, board, counter;
+var simonArr, userChoice, board, pointer, level;
 
 /*----- cached element references -----*/
 
@@ -34,12 +35,13 @@ function init() {
         3: blueSquare, 
         4: purpleSquare
     }
-    displayMessage.textContent = "Good Luck!";
+    level = 1;
+    displayMessage.textContent = `Level: ${level}`;
     render();
 }
 
 function render() {
-    counter = 0;
+    pointer = 0;
     simonPick();
     displayPicks();
 }
@@ -74,16 +76,18 @@ function displayPicks(i = 0) {
 function userPicks(evt) {
     userChoice = evt.target;
     let userChoiceAttr = parseInt(userChoice.getAttribute('id'));
-    if(displayMessage.textContent === 'Fail' || userChoice.tagName !== 'DIV') {
+    if(displayMessage.textContent === LOSE_MESSAGE || userChoice.tagName !== 'DIV') {
         return;
     }
-    if(userChoiceAttr === simonArr[counter]) {
-        counter += 1;
-        if(counter === simonArr.length) {
+    if(userChoiceAttr === simonArr[pointer]) {
+        pointer += 1;
+        if(pointer === simonArr.length) {
+            level += 1;
+            displayMessage.textContent = `Level: ${level}`;
             return render();
         }
     } else {
-        return displayMessage.textContent = 'Fail';
+        return displayMessage.textContent = LOSE_MESSAGE;
     }
     
 }
