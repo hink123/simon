@@ -8,6 +8,7 @@ var simonArr, userChoice, board;
 
 /*----- cached element references -----*/
 
+const allSquares = document.querySelectorAll('section div');
 const redSquare = document.getElementById('1');
 const greenSquare = document.getElementById('2');
 const blueSquare = document.getElementById('3');
@@ -48,11 +49,17 @@ function simonPick() {
 // maybe recurssion for time interval, remove iteration and pass in i = 0
 function displayPicks(i = 0) {
     simonArr = [1, 2, 4];
-   if(i === simonArr.length) {
-       return;
-   }
     let pick = simonArr[i];
     setTimeout(function() {
+            if(i === simonArr.length) {
+                board[simonArr[i - 1]].style.opacity = 1;
+                return;
+            }
+        redSquare.style.opacity = 1;
+        greenSquare.style.opacity = 1;
+        blueSquare.style.opacity = 1;
+        purpleSquare.style.opacity = 1;
+        
         board[pick].style.opacity = 0.5;
         displayPicks(i + 1);
     }, 1000)
