@@ -1,7 +1,7 @@
 /*----- constants -----*/
 
 const SELECTED_SQUARE = 0.5;
-const UNSELECTED_SQUARE = 1;
+const UNSELECTED_SQUARE = null;
 
 /*----- app's state (variables) -----*/
 
@@ -51,31 +51,32 @@ function simonPick() {
 
 function displayPicks(i = 0) {
     let pick = simonArr[i];
-
+    
     setTimeout(function() {
         // exits and resets last color
         if(i === simonArr.length) {
-            board[simonArr[i - 1]].style.opacity = null;
+            board[simonArr[i - 1]].style.opacity = UNSELECTED_SQUARE;
             return;
         }
         // resets colors
-        redSquare.style.opacity = null;
-        greenSquare.style.opacity = null;
-        blueSquare.style.opacity = null;
-        purpleSquare.style.opacity = null;
-        
+        setTimeout(function() {
+            redSquare.style.opacity = UNSELECTED_SQUARE;
+            greenSquare.style.opacity = UNSELECTED_SQUARE;
+            blueSquare.style.opacity = UNSELECTED_SQUARE;
+            purpleSquare.style.opacity = UNSELECTED_SQUARE;
+        }, 1000)
         //highlights pick
         board[pick].style.opacity = SELECTED_SQUARE;
         displayPicks(i + 1);
-    }, 1000)
+    }, 2000)
 }
 
 function userPicks(evt) {
-    if(displayMessage.textContent === 'Fail') {
-        return;
-    }
     userChoice = evt.target;
     let userChoiceAttr = parseInt(userChoice.getAttribute('id'));
+    if(displayMessage.textContent === 'Fail' || userChoice.tagName !== 'DIV') {
+        return;
+    }
     if(userChoiceAttr === simonArr[counter]) {
         counter += 1;
         if(counter === simonArr.length) {
