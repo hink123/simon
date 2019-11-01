@@ -1,6 +1,7 @@
 /*----- constants -----*/
 
-
+const SELECTED_SQUARE = 0.5;
+const UNSELECTED_SQUARE = 1;
 
 /*----- app's state (variables) -----*/
 
@@ -13,14 +14,14 @@ const redSquare = document.getElementById('1');
 const greenSquare = document.getElementById('2');
 const blueSquare = document.getElementById('3');
 const purpleSquare = document.getElementById('4');
+const playButton = document.querySelector('button');
 
 /*----- event listeners -----*/
 
-
+playButton.addEventListener('click', init);
 
 /*----- functions -----*/
 
-init();
 
 function init() {
     simonArr = [];
@@ -46,21 +47,22 @@ function simonPick() {
     simonArr.push(randNum);
 }
 
-// maybe recurssion for time interval, remove iteration and pass in i = 0
 function displayPicks(i = 0) {
-    simonArr = [1, 2, 4];
     let pick = simonArr[i];
     setTimeout(function() {
+            // exits and resets last color
             if(i === simonArr.length) {
-                board[simonArr[i - 1]].style.opacity = 1;
+                board[simonArr[i - 1]].style.opacity = UNSELECTED_SQUARE;
                 return;
             }
-        redSquare.style.opacity = 1;
-        greenSquare.style.opacity = 1;
-        blueSquare.style.opacity = 1;
-        purpleSquare.style.opacity = 1;
+        // resets colors
+        redSquare.style.opacity = UNSELECTED_SQUARE;
+        greenSquare.style.opacity = UNSELECTED_SQUARE;
+        blueSquare.style.opacity = UNSELECTED_SQUARE;
+        purpleSquare.style.opacity = UNSELECTED_SQUARE;
         
-        board[pick].style.opacity = 0.5;
+        //highlights pick
+        board[pick].style.opacity = SELECTED_SQUARE;
         displayPicks(i + 1);
     }, 1000)
 }
