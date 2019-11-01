@@ -7,6 +7,7 @@ const LOSE_MESSAGE = 'WRONG! Hit play to try again';
 /*----- app's state (variables) -----*/
 
 var simonArr, userChoice, board, pointer, level;
+var  highScore = 0;
 
 /*----- cached element references -----*/
 
@@ -16,7 +17,8 @@ const greenSquare = document.getElementById('2');
 const blueSquare = document.getElementById('3');
 const purpleSquare = document.getElementById('4');
 const playButton = document.querySelector('button');
-const displayMessage = document.querySelector('h2');
+const displayMessage = document.querySelector('h2.message');
+const scoreTracker = document.querySelector('h2.score');
 
 /*----- event listeners -----*/
 
@@ -87,7 +89,11 @@ function userPicks(evt) {
             return render();
         }
     } else {
-        return displayMessage.textContent = LOSE_MESSAGE;
+        if (highScore < level) {
+            highScore = level;
+            scoreTracker.textContent = `Current High Score: ${highScore}`;
+        }
+        return displayMessage.textContent = LOSE_MESSAGE; 
     }
     
 }
