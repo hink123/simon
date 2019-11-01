@@ -4,7 +4,7 @@
 
 /*----- app's state (variables) -----*/
 
-var simonArr, userChoice;
+var simonArr, userChoice, board;
 
 /*----- cached element references -----*/
 
@@ -24,6 +24,13 @@ init();
 function init() {
     simonArr = [];
     userChoice = null; 
+    board = {
+        1: redSquare,
+        2: greenSquare,
+        3: blueSquare, 
+        4: purpleSquare
+    }
+    
 
     render();
 }
@@ -38,3 +45,15 @@ function simonPick() {
     simonArr.push(randNum);
 }
 
+// maybe recurssion for time interval, remove iteration and pass in i = 0
+function displayPicks(i = 0) {
+    simonArr = [1, 2, 4];
+   if(i === simonArr.length) {
+       return;
+   }
+    let pick = simonArr[i];
+    setTimeout(function() {
+        board[pick].style.opacity = 0.5;
+        displayPicks(i + 1);
+    }, 1000)
+}
