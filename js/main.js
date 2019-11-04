@@ -12,7 +12,7 @@ const SOUNDS = {
 }
 /*----- app's state (variables) -----*/
 
-var simonArr, userChoice, board, pointer, level;
+var simonArr, userChoice, board, pointer, level, running;
 var  highScore = 0;
 
 /*----- cached element references -----*/
@@ -63,11 +63,13 @@ function simonPick() {
 
 function displayPicks(i = 0) {
     let pick = simonArr[i];
+    running = true;
 
     setTimeout(function() {
         // exits and resets last color
         if(i === simonArr.length) {
             board[simonArr[i - 1]].style.opacity = UNSELECTED_SQUARE;
+            running = false;
             return;
         }
         // resets colors
@@ -94,12 +96,15 @@ function userPicks(evt) {
         player.src = SOUNDS.fail;
         player.play();
         return;
-    }
+    } 
     else if(!simonArr) {
         playSound(userChoiceAttr);
         return;
-    }
-    
+    } 
+    // prevent clicking when displayPicks running
+    else if (running) {
+        return;
+    } 
     else if(userChoiceAttr === simonArr[pointer]) {
         pointer += 1;
         playSound(userChoiceAttr);
@@ -108,7 +113,8 @@ function userPicks(evt) {
             displayMessage.textContent = `Level: ${level}`;
             return render();
         }
-    } else {
+    } 
+    else {
         player.src = SOUNDS.fail;
         player.play();
         if (highScore < level) {

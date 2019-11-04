@@ -8,13 +8,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('../images/neon-grid.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 section {
     display: grid;
-    grid-template-columns: repeat(2, 10vmin);
-    grid-template-rows: repeat(2, 10vmin);
-    grid-gap: 1vmin;
+    grid-template-columns: repeat(2, 30vmin);
+    grid-template-rows: repeat(2, 30vmin);
+    grid-gap: 2vmin;
 }
 
 section.container div {
@@ -23,6 +26,7 @@ section.container div {
 
 button {
     margin-bottom: 1vmin;
+    cursor: pointer;
 }
 
 div.red {
@@ -44,4 +48,5 @@ div.purple {
 
 div:hover {
     cursor: pointer;
+    border-radius: 25%;
 }
