@@ -3,7 +3,12 @@
 const SELECTED_SQUARE = 0.5;
 const UNSELECTED_SQUARE = null;
 const LOSE_MESSAGE = 'WRONG! Hit play to try again';
-
+const SOUNDS = {
+    1: 'sounds/red.ogg',
+    2: 'sounds/green.wav',
+    3: 'sounds/blue.wav',
+    4: 'sounds/purple.ogg'
+}
 /*----- app's state (variables) -----*/
 
 var simonArr, userChoice, board, pointer, level;
@@ -19,6 +24,8 @@ const purpleSquare = document.getElementById('4');
 const playButton = document.querySelector('button');
 const displayMessage = document.querySelector('h2.message');
 const scoreTracker = document.querySelector('h2.score');
+
+const player = new Audio();
 
 /*----- event listeners -----*/
 
@@ -71,6 +78,10 @@ function displayPicks(i = 0) {
         }, 1000)
         //highlights pick
         board[pick].style.opacity = SELECTED_SQUARE;
+        //play sound
+        player.src = SOUNDS[pick];
+        player.play();
+
         displayPicks(i + 1);
     }, 2000)
 }
@@ -78,6 +89,11 @@ function displayPicks(i = 0) {
 function userPicks(evt) {
     userChoice = evt.target;
     let userChoiceAttr = parseInt(userChoice.getAttribute('id'));
+
+    // play sound
+    player.src = SOUNDS[userChoiceAttr];
+    player.play();
+
     if(displayMessage.textContent === LOSE_MESSAGE || userChoice.tagName !== 'DIV') {
         return;
     }
