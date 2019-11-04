@@ -7,7 +7,8 @@ const SOUNDS = {
     1: 'sounds/red.ogg',
     2: 'sounds/green.wav',
     3: 'sounds/blue.wav',
-    4: 'sounds/purple.ogg'
+    4: 'sounds/purple.ogg',
+    fail: 'sounds/nope.ogg'
 }
 /*----- app's state (variables) -----*/
 
@@ -62,7 +63,7 @@ function simonPick() {
 
 function displayPicks(i = 0) {
     let pick = simonArr[i];
-    
+
     setTimeout(function() {
         // exits and resets last color
         if(i === simonArr.length) {
@@ -75,41 +76,52 @@ function displayPicks(i = 0) {
             greenSquare.style.opacity = UNSELECTED_SQUARE;
             blueSquare.style.opacity = UNSELECTED_SQUARE;
             purpleSquare.style.opacity = UNSELECTED_SQUARE;
-        }, 1000)
+        }, 500)
         //highlights pick
         board[pick].style.opacity = SELECTED_SQUARE;
         //play sound
-        player.src = SOUNDS[pick];
-        player.play();
+        playSound(pick);
 
         displayPicks(i + 1);
-    }, 2000)
+    }, 1000)
 }
 
 function userPicks(evt) {
     userChoice = evt.target;
     let userChoiceAttr = parseInt(userChoice.getAttribute('id'));
-
-    // play sound
-    player.src = SOUNDS[userChoiceAttr];
-    player.play();
-
+    
     if(displayMessage.textContent === LOSE_MESSAGE || userChoice.tagName !== 'DIV') {
+        player.src = SOUNDS.fail;
+        player.play();
         return;
     }
-    if(userChoiceAttr === simonArr[pointer]) {
+    else if(!simonArr) {
+        playSound(userChoiceAttr);
+        return;
+    }
+    
+    else if(userChoiceAttr === simonArr[pointer]) {
         pointer += 1;
+        playSound(userChoiceAttr);
         if(pointer === simonArr.length) {
             level += 1;
             displayMessage.textContent = `Level: ${level}`;
             return render();
         }
     } else {
+        player.src = SOUNDS.fail;
+        player.play();
         if (highScore < level) {
             highScore = level;
             scoreTracker.textContent = `Current High Score: ${highScore}`;
         }
         return displayMessage.textContent = LOSE_MESSAGE; 
     }
+
     
+}
+
+function playSound(key) {
+    player.src = SOUNDS[key];
+        player.play();
 }
