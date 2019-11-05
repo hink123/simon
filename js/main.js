@@ -14,7 +14,7 @@ const SOUNDS = {
 }
 /*----- app's state (variables) -----*/
 
-var simonArr, userChoice, board, pointer, level, running, numSquares;
+var simonArr, userChoice, board, pointer, level, running, numSquares, difficulty, time;
 var  highScore = 0;
 
 /*----- cached element references -----*/
@@ -29,7 +29,7 @@ const sixthSquare = document.getElementById('6');
 const playButton = document.querySelector('button');
 const displayMessage = document.querySelector('h2.message');
 const scoreTracker = document.querySelector('h2.score');
-const allSquares = document.querySelectorAll('div');
+const allSquares = document.querySelectorAll('section div');
 
 const player = new Audio();
 
@@ -44,9 +44,8 @@ simonBoard.addEventListener('click', userPicks);
 function init() {
     simonArr = [];
     userChoice = null; 
-    numSquares = 4;
-    hardMode();
-
+    difficulty = document.querySelector('input[name="difficulty"]:checked');
+    setDifficulty(difficulty.value);
     board = {
         1: firstSquare,
         2: secondSquare,
@@ -87,14 +86,14 @@ function displayPicks(i = 0) {
             allSquares.forEach(function(square) {
                 square.style.opacity = UNSELECTED_SQUARE;
             })
-        }, 500)
+        }, time/2)
         //highlights pick
         board[simonPick].style.opacity = SELECTED_SQUARE;
         //play sound
         playSound(simonPick);
 
         displayPicks(i + 1);
-    }, 1000)
+    }, time)
 }
 
 function userPicks(evt) {
@@ -132,8 +131,6 @@ function userPicks(evt) {
         }
         return displayMessage.textContent = LOSE_MESSAGE; 
     }
-
-    
 }
 
 function playSound(key) {
@@ -141,9 +138,21 @@ function playSound(key) {
         player.play();
 }
 
-function hardMode() {
-    simonBoard.style.gridTemplateColumns = `repeat(3, 25vmin)`;
-    fifthSquare.style.display = 'block';
-    sixthSquare.style.display = 'block';
-    numSquares = 6;
+function setDifficulty(value) {
+    if(value === 'hard') {
+        simonBoard.style.gridTemplateColumns = `repeat(3, 25vmin)`;
+        fifthSquare.style.display = 'block';
+        sixthSquare.style.display = 'block';
+        numSquares = 6;
+        time = 750;
+    }
+    else {
+        simonBoard.style.gridTemplateColumns = `repeat(2, 25vmin)`;
+        fifthSquare.style.display = 'none';
+        sixthSquare.style.display = 'none';
+        numSquares = 4;
+        time = 1000;
+    }
 }
+
+

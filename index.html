@@ -11,8 +11,12 @@
 </head>
 <body>
     <h1>Simon</h1>
-    <h2 class ="message">Click "PLAY" When Ready</h2>
-    <button>PLAY</button>
+    <h2 class="message">Click "PLAY" When Ready</h2>
+    <div class="inputs">
+        <input type="radio" name="difficulty" value="normal" checked>
+        <button>PLAY</button>
+        <input type="radio" name="difficulty" value="hard">
+    </div>
 
     <section class="container">
         <div id="1" class="first"></div>
@@ -21,7 +25,6 @@
         <div id="4" class="fourth"></div>
         <div id="5" class="fifth"></div>
         <div id="6" class="sixth"></div>
-        
     </section>
 
     <h2 class="score">Current High Score: 0</h2>
