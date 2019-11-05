@@ -11,22 +11,32 @@ body {
     background-image: url('../images/neon-grid.jpg');
     background-size: cover;
     background-position: center;
+    
 }
+h1, h2 {
+    font-family: 'Press Start 2P', sans-serif;
+    color: white;
+}
+
 
 section {
     display: grid;
-    grid-template-columns: repeat(2, 30vmin);
-    grid-template-rows: repeat(2, 30vmin);
+    grid-template-columns: repeat(2, 25vmin);
+    grid-template-rows: repeat(2, 25vmin);
     grid-gap: 2vmin;
 }
 
 section.container div {
-    border: 2px solid black;
+    border: 3px solid white;
 }
 
 button {
-    margin-bottom: 1vmin;
-    cursor: pointer;
+    margin-bottom: 5vmin;
+    background: none;
+    color: white;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 12px;
+    padding: 2vmin;
 }
 
 div.red {
@@ -46,7 +56,11 @@ div.purple {
     background-color: purple;
 }
 
-div:hover {
+div:hover, button:hover {
     cursor: pointer;
     border-radius: 25%;
+}
+
+h2.score {
+    padding: 5vmin;
 }
