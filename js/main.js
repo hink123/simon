@@ -4,11 +4,11 @@ const SELECTED_SQUARE = 0.5;
 const UNSELECTED_SQUARE = null;
 const LOSE_MESSAGE = 'FAIL! Hit "PLAY" To Try Again';
 const SOUNDS = {
-    1: 'sounds/red.ogg',
-    2: 'sounds/green.wav',
-    3: 'sounds/blue.wav',
-    4: 'sounds/purple.ogg',
-    fail: 'sounds/nope.ogg'
+    1: 'sounds/alien.wav',
+    2: 'sounds/camera-click.wav',
+    3: 'sounds/robot-drip.wav',
+    4: 'sounds/zoom.wav',
+    fail: 'sounds/game-over.wav'
 }
 /*----- app's state (variables) -----*/
 
