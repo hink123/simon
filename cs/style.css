@@ -1,5 +1,5 @@
 * {
-    box-sizing: borer-box;
+    box-sizing: border-box;
 }
 
 body {
@@ -37,23 +37,34 @@ button {
     font-family: 'Press Start 2P', sans-serif;
     font-size: 12px;
     padding: 2vmin;
+    border: 1.5px solid white;
 }
 
-div.red {
+div.first {
     background-color: #A62B7F;
     
 }
 
-div.green {
+div.second {
     background-color: #6252EF;
 }
 
-div.blue {
+div.third {
     background-color: #50AEAF;
 }
 
-div.purple {
+div.fourth {
     background-color: #EB6BD2;
+}
+
+div.fifth {
+    background-color: #F29F89;
+    display: none;
+}
+
+div.sixth {
+    background-color: #8B3B4A;
+    display: none;
 }
 
 div:hover, button:hover {

@@ -8,30 +8,35 @@ const SOUNDS = {
     2: 'sounds/camera-click.wav',
     3: 'sounds/robot-drip.wav',
     4: 'sounds/zoom.wav',
+    5: 'sounds/glitch-robot.wav',
+    6: 'sounds/robot-sneeze.wav',
     fail: 'sounds/game-over.wav'
 }
 /*----- app's state (variables) -----*/
 
-var simonArr, userChoice, board, pointer, level, running;
+var simonArr, userChoice, board, pointer, level, running, numSquares;
 var  highScore = 0;
 
 /*----- cached element references -----*/
 
-const allSquares = document.querySelector('section');
-const redSquare = document.getElementById('1');
-const greenSquare = document.getElementById('2');
-const blueSquare = document.getElementById('3');
-const purpleSquare = document.getElementById('4');
+const simonBoard = document.querySelector('section');
+const firstSquare = document.getElementById('1');
+const secondSquare = document.getElementById('2');
+const thirdSquare = document.getElementById('3');
+const fourthSquare = document.getElementById('4');
+const fifthSquare = document.getElementById('5');
+const sixthSquare = document.getElementById('6');
 const playButton = document.querySelector('button');
 const displayMessage = document.querySelector('h2.message');
 const scoreTracker = document.querySelector('h2.score');
+const allSquares = document.querySelectorAll('div');
 
 const player = new Audio();
 
 /*----- event listeners -----*/
 
 playButton.addEventListener('click', init);
-allSquares.addEventListener('click', userPicks);
+simonBoard.addEventListener('click', userPicks);
 
 /*----- functions -----*/
 
@@ -39,11 +44,16 @@ allSquares.addEventListener('click', userPicks);
 function init() {
     simonArr = [];
     userChoice = null; 
+    numSquares = 4;
+    hardMode();
+
     board = {
-        1: redSquare,
-        2: greenSquare,
-        3: blueSquare, 
-        4: purpleSquare
+        1: firstSquare,
+        2: secondSquare,
+        3: thirdSquare, 
+        4: fourthSquare,
+        5: fifthSquare,
+        6: sixthSquare
     }
     level = 1;
     displayMessage.textContent = `Level: ${level}`;
@@ -57,12 +67,12 @@ function render() {
 }
 
 function simonPick() {
-    let randNum = Math.floor((Math.random() * 4) + 1)
+    let randNum = Math.floor((Math.random() * numSquares) + 1)
     simonArr.push(randNum);
 }
 
 function displayPicks(i = 0) {
-    let pick = simonArr[i];
+    let simonPick = simonArr[i];
     running = true;
 
     setTimeout(function() {
@@ -74,15 +84,14 @@ function displayPicks(i = 0) {
         }
         // resets colors
         setTimeout(function() {
-            redSquare.style.opacity = UNSELECTED_SQUARE;
-            greenSquare.style.opacity = UNSELECTED_SQUARE;
-            blueSquare.style.opacity = UNSELECTED_SQUARE;
-            purpleSquare.style.opacity = UNSELECTED_SQUARE;
+            allSquares.forEach(function(square) {
+                square.style.opacity = UNSELECTED_SQUARE;
+            })
         }, 500)
         //highlights pick
-        board[pick].style.opacity = SELECTED_SQUARE;
+        board[simonPick].style.opacity = SELECTED_SQUARE;
         //play sound
-        playSound(pick);
+        playSound(simonPick);
 
         displayPicks(i + 1);
     }, 1000)
@@ -130,4 +139,11 @@ function userPicks(evt) {
 function playSound(key) {
     player.src = SOUNDS[key];
         player.play();
+}
+
+function hardMode() {
+    simonBoard.style.gridTemplateColumns = `repeat(3, 25vmin)`;
+    fifthSquare.style.display = 'block';
+    sixthSquare.style.display = 'block';
+    numSquares = 6;
 }
