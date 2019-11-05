@@ -2,7 +2,7 @@
 
 const SELECTED_SQUARE = 0.5;
 const UNSELECTED_SQUARE = null;
-const LOSE_MESSAGE = 'WRONG! Hit play to try again';
+const LOSE_MESSAGE = 'FAIL! Hit "PLAY" To Try Again';
 const SOUNDS = {
     1: 'sounds/red.ogg',
     2: 'sounds/green.wav',

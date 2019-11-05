@@ -40,20 +40,20 @@ button {
 }
 
 div.red {
-    background-color: red;
+    background-color: #A62B7F;
     
 }
 
 div.green {
-    background-color: green;
+    background-color: #6252EF;
 }
 
 div.blue {
-    background-color: blue;
+    background-color: #50AEAF;
 }
 
 div.purple {
-    background-color: purple;
+    background-color: #EB6BD2;
 }
 
 div:hover, button:hover {
