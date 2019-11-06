@@ -16,6 +16,7 @@ body {
 h1, h2 {
     font-family: 'Press Start 2P', sans-serif;
     color: white;
+    
 }
 
 
@@ -67,11 +68,34 @@ div.sixth {
     display: none;
 }
 
-div:hover, button:hover {
+.container div:hover, button:hover {
     cursor: pointer;
     border-radius: 25%;
 }
 
 h2.score {
     padding: 5vmin;
+    
+}
+
+input {
+    margin: 1vmin 10vmin 5vmin;
+    cursor: pointer;
+    background: black;
+}
+
+div.inputs {
+    display: flex;
+}
+
+h5 {
+    font-family: 'Press Start 2P', sans-serif;
+    color: white;
+    font-size: 10px;
+    margin: 1vmin auto;
+}
+
+div.difficulty {
+    display: flex;
+    flex-direction: column;
 }
