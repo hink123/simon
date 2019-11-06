@@ -1,16 +1,25 @@
 # Simon
 
-## How To Play
-1. Page loads with four colored squares
-1. Empty array for Simon picks is initialized
-1. When play button is hit, a random number is pushed into array representing a choice
-1. The selection is shown by highlighting square on board for 1 second
-1. If user clicks the wrong square, the game is over, title is updated to FAIL
-1. If square mathces the first array element, push in a new random number to array 
-1. Iterate through the array, flashing each selection on the board for 1 second interval
-1. Check then that each square clicked matches the array element in order
-1. When wrong square clicked, game is over, fail message
+### Simon is a classic memory game that requires a user to repeat a growing sequnece of colors and tones.
+
+## 
+![Game Image](//i.imgur.com/V2sEOxu.jpg)
+
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
+
+## Getting Started
+### How To Play
+- Simon will select the first square and play a sound
+- Repeat the signal by clicking the square
+- Simon will add more squares to the pattern every turn
+- Try to keep up!
+
+[Go To Game](https://hink123.github.io/simon/)
+
+## Next Steps
+#### In the future I plan to add a difficulty setting that will occasionaly shuffle the positions of the squares.
 
 
-## WireFrame
-![Wire Frame](images/simon_wireframe.jpg)
