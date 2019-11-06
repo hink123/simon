@@ -61,11 +61,11 @@ function init() {
 
 function render() {
     pointer = 0;
-    simonPick();
+    simonChoose();
     displayPicks();
 }
 
-function simonPick() {
+function simonChoose() {
     let randNum = Math.floor((Math.random() * numSquares) + 1)
     simonArr.push(randNum);
 }
