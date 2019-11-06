@@ -41,6 +41,10 @@ button {
     border: 1.5px solid white;
 }
 
+button:focus {
+    outline: 0;
+}
+
 div.first {
     background-color: #A62B7F;
     
@@ -78,15 +82,29 @@ h2.score {
     
 }
 
-input {
-    margin: 1vmin 10vmin 5vmin;
-    cursor: pointer;
-    background: black;
-}
-
 div.inputs {
     display: flex;
 }
+
+input {
+    position: absolute;
+    margin: 5vmin 10.5vmin 5vmin;
+    cursor: pointer;
+    opacity: 0;
+}
+
+label {
+    margin: 1vmin 10vmin 5vmin;
+    content: "";
+    width: 2.5vmin;
+    height: 2.5vmin;
+    border: 1px solid white;
+}
+
+input:checked + label {
+    background-color: white;
+}
+
 
 h5 {
     font-family: 'Press Start 2P', sans-serif;
