@@ -17,7 +17,7 @@
 - Simon will add more squares to the pattern every turn
 - Try to keep up!
 
-[Go To Game](https://hink123.github.io/simon/)
+[Go To Game](images/game-image.jpg)
 
 ## Next Steps
 #### In the future I plan to add a difficulty setting that will occasionaly shuffle the positions of the squares.
