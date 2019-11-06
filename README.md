@@ -1,6 +1,6 @@
 # Simon
 
-## PseudoCode
+## How To Play
 1. Page loads with four colored squares
 1. Empty array for Simon picks is initialized
 1. When play button is hit, a random number is pushed into array representing a choice
