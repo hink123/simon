@@ -20,6 +20,6 @@
 [Go To Game](https://hink123.github.io/simon/)
 
 ## Next Steps
-#### In the future I plan to add a difficulty setting that will occasionaly shuffle the positions of the squares.
+#### In the future I plan to add a difficulty setting that will occasionally shuffle the positions of the squares.
 
 
