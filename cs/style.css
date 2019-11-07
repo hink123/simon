@@ -19,7 +19,6 @@ h1, h2 {
     
 }
 
-
 section {
     display: grid;
     grid-template-columns: repeat(2, 25vmin);
@@ -104,7 +103,6 @@ label {
 input:checked + label {
     background-color: white;
 }
-
 
 h5 {
     font-family: 'Press Start 2P', sans-serif;
