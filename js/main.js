@@ -100,17 +100,17 @@ function userPicks(evt) {
     userChoice = evt.target;
     let userChoiceAttr = parseInt(userChoice.getAttribute('id'));
     
-    if(displayMessage.textContent === LOSE_MESSAGE || userChoice.tagName !== 'DIV') {
+    // prevent clicking when displayPicks running
+    if (running || userChoice.tagName !== 'DIV') {
+        return;
+    } 
+    else if(displayMessage.textContent === LOSE_MESSAGE) {
         player.src = SOUNDS.fail;
         player.play();
         return;
     } 
     else if(!simonArr) {
         playSound(userChoiceAttr);
-        return;
-    } 
-    // prevent clicking when displayPicks running
-    else if (running) {
         return;
     } 
     else if(userChoiceAttr === simonArr[pointer]) {
