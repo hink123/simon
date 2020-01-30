@@ -1,6 +1,7 @@
 # Simon
 
-### Simon is a classic memory game that requires a user to repeat a growing sequnece of colors and tones.
+### Simon is a classic memory game that requires a user to repeat a growing sequnece of colors and tones. Note: Current API has been shutdown, searching for a replacement.
+
 
 ## 
 ![Game Image](images/simon-image.jpg)
